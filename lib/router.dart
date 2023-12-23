@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:survey_app/home_screen.dart';
 
 final router = GoRouter(
   initialLocation: '/',
-  routes: [],
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const HomeScreen(),
+    ),
+  ],
   errorPageBuilder: (context, state) => MaterialPage(
     key: state.pageKey,
     child: Scaffold(
