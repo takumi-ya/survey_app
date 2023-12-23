@@ -11,8 +11,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
-
   # 状態管理
   hooks_riverpod: ^2.3.8
   flutter_hooks: ^0.20.3
@@ -27,6 +25,8 @@ dependencies:
   firebase_core: ^2.24.2
   firebase_auth: ^4.15.3
 
+  # その他
+  cupertino_icons: ^1.0.2
 
 dev_dependencies:
   flutter_test:
