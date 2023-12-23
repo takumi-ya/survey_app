@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "622509211896",
+    "project_id": "survey-app-with-spreadsheet",
+    "storage_bucket": "survey-app-with-spreadsheet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622509211896:android:af77b0f8b0da64b9897b0d",
+        "android_client_info": {
+          "package_name": "com.example.survey_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU061nLvqsQvqU4paDwhVtDSQ1JR9SJAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
