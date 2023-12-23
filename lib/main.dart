@@ -6,12 +6,13 @@ import 'package:survey_app/firebase_options.dart';
 import 'package:survey_app/router.dart';
 
 Future<void> main() async {
+  // firebaseの初期化
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  // 匿名ログイン
   final firebaseAuth = FirebaseAuth.instance;
   final currentUser = firebaseAuth.currentUser;
   if (currentUser != null) {
@@ -35,7 +36,6 @@ Future<void> main() async {
 class MyApp extends HookConsumerWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
