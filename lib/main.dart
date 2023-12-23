@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -10,6 +11,19 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  final firebaseAuth = FirebaseAuth.instance;
+  final currentUser = firebaseAuth.currentUser;
+  if (currentUser != null) {
+    debugPrint('[info] already logged in: ${currentUser.uid}');
+  } else {
+    try {
+      final newUser = await firebaseAuth.signInAnonymously();
+      debugPrint('[info] logged in: ${newUser.user?.uid}');
+    } catch (e) {
+      debugPrint('[error] failed to login: $e');
+    }
+  }
 
   runApp(
     const ProviderScope(
