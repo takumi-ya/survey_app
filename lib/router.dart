@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:survey_app/home_screen.dart';
+import 'package:survey_app/view/home_screen.dart';
 
 final router = GoRouter(
   initialLocation: '/',
