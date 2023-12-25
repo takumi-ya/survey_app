@@ -6,7 +6,14 @@ class SurveyResultPost {
   static Future<void> postSurveyResult(String json) async {
     try {
       final url = GoogleApiSettings.createSpreadsheetApiGetUrl();
-      final res = await http.post(Uri.parse(url), body: json);
+      final res = await http.post(
+        Uri.parse(url),
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer [YOUR_ACCESS_TOKEN]'
+        },
+        body: json,
+      );
       if (res.statusCode == 200) {
         debugPrint('[info] posted survey result');
       } else {
