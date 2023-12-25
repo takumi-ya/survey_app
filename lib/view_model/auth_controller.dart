@@ -13,9 +13,13 @@ class AuthController extends StateNotifier<User?> {
   final _auth = FirebaseAuth.instance;
 
   Future<void> signInWithAnonymous() async {
-    final userCredential = await _auth.signInAnonymously();
-    debugPrint('[info] logged in: ${userCredential.user?.uid}');
-    state = userCredential.user;
+    try {
+      final userCredential = await _auth.signInAnonymously();
+      debugPrint('[info] logged in: ${userCredential.user?.uid}');
+      state = userCredential.user;
+    } catch (e) {
+      debugPrint('[error] failed to login: $e');
+    }
   }
 
   Future<void> signInWithGoogle() async {
