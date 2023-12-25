@@ -32,9 +32,6 @@ Map<String, dynamic> _$$_RequestsToJson(_$_Requests instance) =>
 
 _$_UpdateCells _$$_UpdateCellsFromJson(Map<String, dynamic> json) =>
     _$_UpdateCells(
-      start: json['start'] == null
-          ? null
-          : Start.fromJson(json['start'] as Map<String, dynamic>),
       rows: (json['rows'] as List<dynamic>?)
           ?.map((e) => Rows.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -43,21 +40,8 @@ _$_UpdateCells _$$_UpdateCellsFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_UpdateCellsToJson(_$_UpdateCells instance) =>
     <String, dynamic>{
-      'start': instance.start,
       'rows': instance.rows,
       'fields': instance.fields,
-    };
-
-_$_Start _$$_StartFromJson(Map<String, dynamic> json) => _$_Start(
-      sheetId: json['sheetId'] as int?,
-      rowIndex: json['rowIndex'] as int?,
-      columnIndex: json['columnIndex'] as int?,
-    );
-
-Map<String, dynamic> _$$_StartToJson(_$_Start instance) => <String, dynamic>{
-      'sheetId': instance.sheetId,
-      'rowIndex': instance.rowIndex,
-      'columnIndex': instance.columnIndex,
     };
 
 _$_Rows _$$_RowsFromJson(Map<String, dynamic> json) => _$_Rows(

@@ -318,7 +318,6 @@ UpdateCells _$UpdateCellsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UpdateCells {
-  Start? get start => throw _privateConstructorUsedError;
   List<Rows>? get rows => throw _privateConstructorUsedError;
   String? get fields => throw _privateConstructorUsedError;
 
@@ -334,9 +333,7 @@ abstract class $UpdateCellsCopyWith<$Res> {
           UpdateCells value, $Res Function(UpdateCells) then) =
       _$UpdateCellsCopyWithImpl<$Res, UpdateCells>;
   @useResult
-  $Res call({Start? start, List<Rows>? rows, String? fields});
-
-  $StartCopyWith<$Res>? get start;
+  $Res call({List<Rows>? rows, String? fields});
 }
 
 /// @nodoc
@@ -352,15 +349,10 @@ class _$UpdateCellsCopyWithImpl<$Res, $Val extends UpdateCells>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? start = freezed,
     Object? rows = freezed,
     Object? fields = freezed,
   }) {
     return _then(_value.copyWith(
-      start: freezed == start
-          ? _value.start
-          : start // ignore: cast_nullable_to_non_nullable
-              as Start?,
       rows: freezed == rows
           ? _value.rows
           : rows // ignore: cast_nullable_to_non_nullable
@@ -370,18 +362,6 @@ class _$UpdateCellsCopyWithImpl<$Res, $Val extends UpdateCells>
           : fields // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $StartCopyWith<$Res>? get start {
-    if (_value.start == null) {
-      return null;
-    }
-
-    return $StartCopyWith<$Res>(_value.start!, (value) {
-      return _then(_value.copyWith(start: value) as $Val);
-    });
   }
 }
 
@@ -393,10 +373,7 @@ abstract class _$$_UpdateCellsCopyWith<$Res>
       __$$_UpdateCellsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Start? start, List<Rows>? rows, String? fields});
-
-  @override
-  $StartCopyWith<$Res>? get start;
+  $Res call({List<Rows>? rows, String? fields});
 }
 
 /// @nodoc
@@ -410,15 +387,10 @@ class __$$_UpdateCellsCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? start = freezed,
     Object? rows = freezed,
     Object? fields = freezed,
   }) {
     return _then(_$_UpdateCells(
-      start: freezed == start
-          ? _value.start
-          : start // ignore: cast_nullable_to_non_nullable
-              as Start?,
       rows: freezed == rows
           ? _value._rows
           : rows // ignore: cast_nullable_to_non_nullable
@@ -435,14 +407,12 @@ class __$$_UpdateCellsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_UpdateCells implements _UpdateCells {
   const _$_UpdateCells(
-      {this.start, final List<Rows>? rows, this.fields = "userEnteredValue"})
+      {final List<Rows>? rows, this.fields = "userEnteredValue"})
       : _rows = rows;
 
   factory _$_UpdateCells.fromJson(Map<String, dynamic> json) =>
       _$$_UpdateCellsFromJson(json);
 
-  @override
-  final Start? start;
   final List<Rows>? _rows;
   @override
   List<Rows>? get rows {
@@ -459,7 +429,7 @@ class _$_UpdateCells implements _UpdateCells {
 
   @override
   String toString() {
-    return 'UpdateCells(start: $start, rows: $rows, fields: $fields)';
+    return 'UpdateCells(rows: $rows, fields: $fields)';
   }
 
   @override
@@ -467,7 +437,6 @@ class _$_UpdateCells implements _UpdateCells {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UpdateCells &&
-            (identical(other.start, start) || other.start == start) &&
             const DeepCollectionEquality().equals(other._rows, _rows) &&
             (identical(other.fields, fields) || other.fields == fields));
   }
@@ -475,7 +444,7 @@ class _$_UpdateCells implements _UpdateCells {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, start, const DeepCollectionEquality().hash(_rows), fields);
+      runtimeType, const DeepCollectionEquality().hash(_rows), fields);
 
   @JsonKey(ignore: true)
   @override
@@ -492,16 +461,12 @@ class _$_UpdateCells implements _UpdateCells {
 }
 
 abstract class _UpdateCells implements UpdateCells {
-  const factory _UpdateCells(
-      {final Start? start,
-      final List<Rows>? rows,
-      final String? fields}) = _$_UpdateCells;
+  const factory _UpdateCells({final List<Rows>? rows, final String? fields}) =
+      _$_UpdateCells;
 
   factory _UpdateCells.fromJson(Map<String, dynamic> json) =
       _$_UpdateCells.fromJson;
 
-  @override
-  Start? get start;
   @override
   List<Rows>? get rows;
   @override
@@ -509,172 +474,6 @@ abstract class _UpdateCells implements UpdateCells {
   @override
   @JsonKey(ignore: true)
   _$$_UpdateCellsCopyWith<_$_UpdateCells> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Start _$StartFromJson(Map<String, dynamic> json) {
-  return _Start.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Start {
-  int? get sheetId => throw _privateConstructorUsedError;
-  int? get rowIndex => throw _privateConstructorUsedError;
-  int? get columnIndex => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $StartCopyWith<Start> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $StartCopyWith<$Res> {
-  factory $StartCopyWith(Start value, $Res Function(Start) then) =
-      _$StartCopyWithImpl<$Res, Start>;
-  @useResult
-  $Res call({int? sheetId, int? rowIndex, int? columnIndex});
-}
-
-/// @nodoc
-class _$StartCopyWithImpl<$Res, $Val extends Start>
-    implements $StartCopyWith<$Res> {
-  _$StartCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? sheetId = freezed,
-    Object? rowIndex = freezed,
-    Object? columnIndex = freezed,
-  }) {
-    return _then(_value.copyWith(
-      sheetId: freezed == sheetId
-          ? _value.sheetId
-          : sheetId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      rowIndex: freezed == rowIndex
-          ? _value.rowIndex
-          : rowIndex // ignore: cast_nullable_to_non_nullable
-              as int?,
-      columnIndex: freezed == columnIndex
-          ? _value.columnIndex
-          : columnIndex // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_StartCopyWith<$Res> implements $StartCopyWith<$Res> {
-  factory _$$_StartCopyWith(_$_Start value, $Res Function(_$_Start) then) =
-      __$$_StartCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int? sheetId, int? rowIndex, int? columnIndex});
-}
-
-/// @nodoc
-class __$$_StartCopyWithImpl<$Res> extends _$StartCopyWithImpl<$Res, _$_Start>
-    implements _$$_StartCopyWith<$Res> {
-  __$$_StartCopyWithImpl(_$_Start _value, $Res Function(_$_Start) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? sheetId = freezed,
-    Object? rowIndex = freezed,
-    Object? columnIndex = freezed,
-  }) {
-    return _then(_$_Start(
-      sheetId: freezed == sheetId
-          ? _value.sheetId
-          : sheetId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      rowIndex: freezed == rowIndex
-          ? _value.rowIndex
-          : rowIndex // ignore: cast_nullable_to_non_nullable
-              as int?,
-      columnIndex: freezed == columnIndex
-          ? _value.columnIndex
-          : columnIndex // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_Start implements _Start {
-  const _$_Start({this.sheetId, this.rowIndex, this.columnIndex});
-
-  factory _$_Start.fromJson(Map<String, dynamic> json) =>
-      _$$_StartFromJson(json);
-
-  @override
-  final int? sheetId;
-  @override
-  final int? rowIndex;
-  @override
-  final int? columnIndex;
-
-  @override
-  String toString() {
-    return 'Start(sheetId: $sheetId, rowIndex: $rowIndex, columnIndex: $columnIndex)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Start &&
-            (identical(other.sheetId, sheetId) || other.sheetId == sheetId) &&
-            (identical(other.rowIndex, rowIndex) ||
-                other.rowIndex == rowIndex) &&
-            (identical(other.columnIndex, columnIndex) ||
-                other.columnIndex == columnIndex));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, sheetId, rowIndex, columnIndex);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_StartCopyWith<_$_Start> get copyWith =>
-      __$$_StartCopyWithImpl<_$_Start>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_StartToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Start implements Start {
-  const factory _Start(
-      {final int? sheetId,
-      final int? rowIndex,
-      final int? columnIndex}) = _$_Start;
-
-  factory _Start.fromJson(Map<String, dynamic> json) = _$_Start.fromJson;
-
-  @override
-  int? get sheetId;
-  @override
-  int? get rowIndex;
-  @override
-  int? get columnIndex;
-  @override
-  @JsonKey(ignore: true)
-  _$$_StartCopyWith<_$_Start> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

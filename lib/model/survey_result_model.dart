@@ -27,24 +27,12 @@ class Requests with _$Requests {
 @freezed
 class UpdateCells with _$UpdateCells {
   const factory UpdateCells({
-    Start? start,
     List<Rows>? rows,
     @Default("userEnteredValue") String? fields,
   }) = _UpdateCells;
 
   factory UpdateCells.fromJson(Map<String, Object?> json) =>
       _$UpdateCellsFromJson(json);
-}
-
-@freezed
-class Start with _$Start {
-  const factory Start({
-    int? sheetId,
-    int? rowIndex,
-    int? columnIndex,
-  }) = _Start;
-
-  factory Start.fromJson(Map<String, Object?> json) => _$StartFromJson(json);
 }
 
 @freezed
