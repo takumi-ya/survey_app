@@ -27,11 +27,26 @@ class SurveyScreen extends HookConsumerWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: () {
-                String answer = textEditingController.text;
-                // TODO: Save the answer or perform any other action
-
-                context.pop();
+              onPressed: () async {
+                final jsonBody = SurveyResultModel(
+                  requests: [
+                    Requests(
+                      updateCells: UpdateCells(
+                        rows: [
+                          Rows(
+                            values: values,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+                debugPrint(jsonBody.toJson().toString());
+                await SurveyResultPost.postSurveyResult(
+                  jsonBody.toJson(),
+                ).then(
+                  (value) => context.pop(),
+                );
               },
               child: const Text('Submit'),
             ),
