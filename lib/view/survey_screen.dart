@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+// import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:survey_app/model/survey_result_model.dart';
+import 'package:survey_app/view_model/survey_result_post.dart';
 
 class SurveyScreen extends HookConsumerWidget {
   final String? surveyText;
@@ -10,7 +12,14 @@ class SurveyScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final textEditingController = useTextEditingController();
+    final values = [
+      const Values(
+        userEnteredValue: UserEnteredValue(
+          stringValue: '',
+        ),
+      ),
+    ];
+    // final textEditingController = useTextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -21,10 +30,15 @@ class SurveyScreen extends HookConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
-              controller: textEditingController,
+              // controller: textEditingController,
               decoration: const InputDecoration(
                 hintText: 'Enter your answer',
               ),
+              onSubmitted: (value) {
+                debugPrint('[info] entered text :$value');
+                final answer = UserEnteredValue(stringValue: value);
+                values.add(Values(userEnteredValue: answer));
+              },
             ),
             ElevatedButton(
               onPressed: () async {
