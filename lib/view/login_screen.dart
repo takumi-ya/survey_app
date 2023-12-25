@@ -12,14 +12,16 @@ class LoginScreen extends HookConsumerWidget {
       appBar: AppBar(
         title: const Text('Google Login'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text('Google Login'),
-          SignInButton(Buttons.google, onPressed: () async {
-            await googleSignIn(context);
-          })
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Google Login'),
+            SignInButton(Buttons.google, onPressed: () async {
+              await googleSignIn(context);
+            })
+          ],
+        ),
       ),
     );
   }
