@@ -10,6 +10,14 @@ class HomeScreen extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.account_circle_outlined),
+            onPressed: () {
+              context.go('/login');
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(
