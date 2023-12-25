@@ -48,9 +48,11 @@ class MyApp extends HookConsumerWidget {
           MaterialApp.router(
             debugShowCheckedModeBanner: false,
             title: 'survey_app',
-            routerDelegate: router.routerDelegate,
-            routeInformationParser: router.routeInformationParser,
-            routeInformationProvider: router.routeInformationProvider,
+            routerDelegate: ref.watch(routerProvider).routerDelegate,
+            routeInformationParser:
+                ref.watch(routerProvider).routeInformationParser,
+            routeInformationProvider:
+                ref.watch(routerProvider).routeInformationProvider,
           ),
         ],
       ),
