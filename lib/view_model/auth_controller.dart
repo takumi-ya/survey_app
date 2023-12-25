@@ -15,10 +15,10 @@ class AuthController extends StateNotifier<User?> {
   Future<void> signInWithAnonymous() async {
     try {
       final userCredential = await _auth.signInAnonymously();
-      debugPrint('[info] logged in: ${userCredential.user?.uid}');
+      debugPrint('[info] anonymous logged in: ${userCredential.user?.uid}');
       state = userCredential.user;
     } catch (e) {
-      debugPrint('[error] failed to login: $e');
+      debugPrint('[error] failed to login with anonymous: $e');
     }
   }
 
@@ -34,11 +34,11 @@ class AuthController extends StateNotifier<User?> {
       final userCredential =
           await FirebaseAuth.instance.signInWithCredential(credential);
 
-      debugPrint('[info] logged in: ${userCredential.user?.uid}');
+      debugPrint('[info] logged in with google: ${userCredential.user?.uid}');
 
       state = userCredential.user;
     } catch (e) {
-      debugPrint('[error] failed to login: $e');
+      debugPrint('[error] failed to login with google: $e');
     }
   }
 
@@ -46,9 +46,11 @@ class AuthController extends StateNotifier<User?> {
   Future<void> signOut() async {
     await _auth.signOut();
     state = null;
+    debugPrint('[info] logged out');
   }
 
   Future<void> deleteAccount() async {
     await state?.delete();
+    debugPrint('[info] deleted account');
   }
 }
