@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class HomeScreen extends HookConsumerWidget {
@@ -9,15 +10,23 @@ class HomeScreen extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.account_circle_outlined),
+            onPressed: () {
+              context.push('/login');
+            },
+          ),
+        ],
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Home'),
+            const Text('Home'),
             ElevatedButton(
-              onPressed: null,
-              child: Text('Go to Survey'),
+              onPressed: () => context.go('/survey'),
+              child: const Text('Go to Survey'),
             ),
           ],
         ),

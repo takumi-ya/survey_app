@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -11,20 +11,6 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  // 匿名ログイン
-  final firebaseAuth = FirebaseAuth.instance;
-  final currentUser = firebaseAuth.currentUser;
-  if (currentUser != null) {
-    debugPrint('[info] already logged in: ${currentUser.uid}');
-  } else {
-    try {
-      final newUser = await firebaseAuth.signInAnonymously();
-      debugPrint('[info] logged in: ${newUser.user?.uid}');
-    } catch (e) {
-      debugPrint('[error] failed to login: $e');
-    }
-  }
 
   runApp(
     const ProviderScope(
@@ -48,9 +34,11 @@ class MyApp extends HookConsumerWidget {
           MaterialApp.router(
             debugShowCheckedModeBanner: false,
             title: 'survey_app',
-            routerDelegate: router.routerDelegate,
-            routeInformationParser: router.routeInformationParser,
-            routeInformationProvider: router.routeInformationProvider,
+            routerDelegate: ref.watch(routerProvider).routerDelegate,
+            routeInformationParser:
+                ref.watch(routerProvider).routeInformationParser,
+            routeInformationProvider:
+                ref.watch(routerProvider).routeInformationProvider,
           ),
         ],
       ),
