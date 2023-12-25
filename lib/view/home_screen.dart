@@ -14,7 +14,7 @@ class HomeScreen extends HookConsumerWidget {
           IconButton(
             icon: const Icon(Icons.account_circle_outlined),
             onPressed: () {
-              context.go('/login');
+              context.push('/login');
             },
           ),
         ],
