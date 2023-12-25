@@ -1,8 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 // import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:survey_app/model/survey_result_model.dart';
+import 'package:survey_app/model/spread_sheet_body.dart';
 import 'package:survey_app/view_model/survey_result_post.dart';
 
 class SurveyScreen extends HookConsumerWidget {
@@ -13,7 +15,7 @@ class SurveyScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final values = [
-      const Values(
+      Values(
         userEnteredValue: UserEnteredValue(
           stringValue: '',
         ),
@@ -42,7 +44,7 @@ class SurveyScreen extends HookConsumerWidget {
             ),
             ElevatedButton(
               onPressed: () async {
-                final jsonBody = SurveyResultModel(
+                final jsonBody = SpreadSheetBody(
                   requests: [
                     Requests(
                       updateCells: UpdateCells(
@@ -57,7 +59,7 @@ class SurveyScreen extends HookConsumerWidget {
                 );
                 debugPrint(jsonBody.toJson().toString());
                 await SurveyResultPost.postSurveyResult(
-                  jsonBody.toJson(),
+                  jsonEncode(jsonBody.toJson()),
                 ).then(
                   (value) => context.pop(),
                 );
