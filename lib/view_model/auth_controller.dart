@@ -51,8 +51,4 @@ class AuthController extends StateNotifier<User?> {
   Future<void> deleteAccount() async {
     await state?.delete();
   }
-
-  void logout() {
-    state = null;
-  }
 }
