@@ -12,20 +12,6 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // // 匿名ログイン
-  // final firebaseAuth = FirebaseAuth.instance;
-  // final currentUser = firebaseAuth.currentUser;
-  // if (currentUser != null) {
-  //   debugPrint('[info] already logged in: ${currentUser.uid}');
-  // } else {
-  //   try {
-  //     final newUser = await firebaseAuth.signInAnonymously();
-  //     debugPrint('[info] logged in: ${newUser.user?.uid}');
-  //   } catch (e) {
-  //     debugPrint('[error] failed to login: $e');
-  //   }
-  // }
-
   runApp(
     const ProviderScope(
       child: MyApp(),
