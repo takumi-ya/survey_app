@@ -58,4 +58,19 @@ class AuthController extends StateNotifier<User?> {
     await state?.delete();
     debugPrint('[info] deleted account');
   }
+
+  Future<String> getAccessToken() async {
+    try {
+      // 既にサインインしているか確認
+      GoogleSignInAccount? account = await _googleSignIn.signInSilently();
+      account ??= await _googleSignIn.signIn();
+
+      // アクセストークンを取得
+      GoogleSignInAuthentication? googleAuth = await account?.authentication;
+      return googleAuth?.accessToken ?? '';
+    } catch (error) {
+      debugPrint("Google Sign-In error: $error");
+      return '';
+    }
+  }
 }
