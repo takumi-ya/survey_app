@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-// import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:survey_app/model/spreadsheet_request_body.dart';
@@ -16,7 +15,6 @@ class SurveyScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final values = [DateTime.now().toString()];
-    // final textEditingController = useTextEditingController();
 
     final authController = ref.read(authControllerProvider.notifier);
 
@@ -29,7 +27,6 @@ class SurveyScreen extends HookConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
-              // controller: textEditingController,
               decoration: const InputDecoration(
                 hintText: 'Enter your answer',
               ),
