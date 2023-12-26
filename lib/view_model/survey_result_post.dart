@@ -17,7 +17,8 @@ class SurveyResultPost {
       if (res.statusCode == 200) {
         debugPrint('[info] posted survey result');
       } else {
-        debugPrint('[error] failed to post survey result: ${res.statusCode}');
+        debugPrint(
+            '[error] failed to post survey result: ${res.statusCode} ${res.body}');
       }
     } catch (e) {
       debugPrint('[error] failed to post survey result: $e');
