@@ -11,6 +11,7 @@ class AuthController extends StateNotifier<User?> {
   }
 
   final _auth = FirebaseAuth.instance;
+  // スコープなしでもログインはできるが、スプシにアクセスできない
   final _googleSignIn = GoogleSignIn(
     scopes: [
       'https://www.googleapis.com/auth/spreadsheets',
