@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:survey_app/model/spreadsheet_request_body.dart';
-import 'package:survey_app/view_model/auth_controller_provider.dart';
+import 'package:survey_app/view_model/auth_controller.dart';
 import 'package:survey_app/view_model/survey_result_post.dart';
 
 class SurveyScreen extends HookConsumerWidget {
