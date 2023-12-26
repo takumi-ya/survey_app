@@ -11,6 +11,11 @@ class AuthController extends StateNotifier<User?> {
   }
 
   final _auth = FirebaseAuth.instance;
+  final _googleSignIn = GoogleSignIn(
+    scopes: [
+      'https://www.googleapis.com/auth/spreadsheets',
+    ],
+  );
 
   Future<void> signInWithAnonymous() async {
     try {
@@ -24,7 +29,7 @@ class AuthController extends StateNotifier<User?> {
 
   Future<void> signInWithGoogle() async {
     try {
-      final googleUser = await GoogleSignIn().signIn();
+      final googleUser = await _googleSignIn.signIn();
       final googleAuth = await googleUser!.authentication;
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
