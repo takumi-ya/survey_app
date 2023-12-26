@@ -3,14 +3,14 @@ import 'package:survey_app/const/google_api_settings.dart';
 import 'package:http/http.dart' as http;
 
 class SurveyResultPost {
-  static Future<void> postSurveyResult(String json) async {
+  static Future<void> postSurveyResult(String json, String accessToken) async {
     try {
       final url = GoogleApiSettings.createSpreadsheetApiGetUrl();
       final res = await http.post(
         Uri.parse(url),
         headers: {
           "Content-Type": "application/json",
-          'Authorization': 'Bearer [YOUR_ACCESS_TOKEN]'
+          'Authorization': 'Bearer $accessToken'
         },
         body: json,
       );
