@@ -3,6 +3,10 @@ import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+final authControllerProvider = StateNotifierProvider<AuthController, User?>(
+  (ref) => AuthController(initialUser: FirebaseAuth.instance.currentUser),
+);
+
 class AuthController extends StateNotifier<User?> {
   AuthController({User? initialUser}) : super(initialUser) {
     _auth.userChanges().listen((user) {
@@ -11,6 +15,12 @@ class AuthController extends StateNotifier<User?> {
   }
 
   final _auth = FirebaseAuth.instance;
+  // スコープなしでもログインはできるが、スプシにアクセスできない
+  final _googleSignIn = GoogleSignIn(
+    scopes: [
+      'https://www.googleapis.com/auth/spreadsheets',
+    ],
+  );
 
   Future<void> signInWithAnonymous() async {
     try {
@@ -24,7 +34,7 @@ class AuthController extends StateNotifier<User?> {
 
   Future<void> signInWithGoogle() async {
     try {
-      final googleUser = await GoogleSignIn().signIn();
+      final googleUser = await _googleSignIn.signIn();
       final googleAuth = await googleUser!.authentication;
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
@@ -52,5 +62,20 @@ class AuthController extends StateNotifier<User?> {
   Future<void> deleteAccount() async {
     await state?.delete();
     debugPrint('[info] deleted account');
+  }
+
+  Future<String> getAccessToken() async {
+    try {
+      // 既にサインインしているか確認
+      GoogleSignInAccount? account = await _googleSignIn.signInSilently();
+      account ??= await _googleSignIn.signIn();
+
+      // アクセストークンを取得
+      GoogleSignInAuthentication? googleAuth = await account?.authentication;
+      return googleAuth?.accessToken ?? '';
+    } catch (error) {
+      debugPrint("Google Sign-In error: $error");
+      return '';
+    }
   }
 }

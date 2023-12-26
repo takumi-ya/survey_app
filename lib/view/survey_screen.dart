@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-// import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:survey_app/model/spread_sheet_body.dart';
+import 'package:survey_app/model/spreadsheet_request_body.dart';
+import 'package:survey_app/view_model/auth_controller.dart';
 import 'package:survey_app/view_model/survey_result_post.dart';
 
 class SurveyScreen extends HookConsumerWidget {
@@ -14,14 +14,9 @@ class SurveyScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final values = [
-      Values(
-        userEnteredValue: UserEnteredValue(
-          stringValue: '',
-        ),
-      ),
-    ];
-    // final textEditingController = useTextEditingController();
+    final values = [DateTime.now().toString()];
+
+    final authController = ref.read(authControllerProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(
@@ -32,35 +27,22 @@ class SurveyScreen extends HookConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
-              // controller: textEditingController,
               decoration: const InputDecoration(
                 hintText: 'Enter your answer',
               ),
               onSubmitted: (value) {
                 debugPrint('[info] entered text :$value');
-                final answer = UserEnteredValue(stringValue: value);
-                values.add(Values(userEnteredValue: answer));
+                values.add(value);
               },
             ),
             ElevatedButton(
               onPressed: () async {
-                final jsonBody = SpreadSheetBody(
-                  requests: [
-                    Requests(
-                      updateCells: UpdateCells(
-                        rows: [
-                          Rows(
-                            values: values,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                );
+                final jsonBody = SpreadsheetRequestBody(values: [values]);
                 debugPrint(jsonBody.toJson().toString());
+                final accessToken = await authController.getAccessToken();
                 await SurveyResultPost.postSurveyResult(
-                  jsonEncode(jsonBody.toJson()),
-                ).then(
+                        jsonEncode(jsonBody.toJson()), accessToken)
+                    .then(
                   (value) => context.pop(),
                 );
               },

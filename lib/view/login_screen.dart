@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sign_in_button/sign_in_button.dart';
-import 'package:survey_app/view_model/auth_controller_provider.dart';
+import 'package:survey_app/view_model/auth_controller.dart';
 
 class LoginScreen extends HookConsumerWidget {
   const LoginScreen({super.key});
