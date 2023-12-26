@@ -3,6 +3,10 @@ import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+final authControllerProvider = StateNotifierProvider<AuthController, User?>(
+  (ref) => AuthController(initialUser: FirebaseAuth.instance.currentUser),
+);
+
 class AuthController extends StateNotifier<User?> {
   AuthController({User? initialUser}) : super(initialUser) {
     _auth.userChanges().listen((user) {
