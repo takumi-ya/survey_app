@@ -28,6 +28,10 @@ class HomeScreen extends HookConsumerWidget {
               onPressed: () => context.go('/survey'),
               child: const Text('Go to Survey'),
             ),
+            ElevatedButton(
+              onPressed: () => context.go('/file_list'),
+              child: const Text('Go to File List'),
+            )
           ],
         ),
       ),

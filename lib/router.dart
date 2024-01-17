@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:survey_app/view/file_list_screen.dart';
 import 'package:survey_app/view/home_screen.dart';
 import 'package:survey_app/view/login_screen.dart';
 import 'package:survey_app/view/survey_screen.dart';
@@ -17,6 +18,10 @@ final routerProvider = Provider(
             path: 'survey',
             builder: (context, state) => const SurveyScreen(),
           ),
+          GoRoute(
+            path: 'file_list',
+            builder: (context, state) => FileListScreen(),
+          )
         ],
       ),
       GoRoute(
