@@ -19,6 +19,7 @@ class AuthController extends StateNotifier<User?> {
   final _googleSignIn = GoogleSignIn(
     scopes: [
       'https://www.googleapis.com/auth/spreadsheets',
+      'https://www.googleapis.com/auth/drive',
     ],
   );
 
