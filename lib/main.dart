@@ -23,24 +23,13 @@ class MyApp extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      title: 'survey_app',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Stack(
-        children: [
-          MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            title: 'survey_app',
-            routerDelegate: ref.watch(routerProvider).routerDelegate,
-            routeInformationParser:
-                ref.watch(routerProvider).routeInformationParser,
-            routeInformationProvider:
-                ref.watch(routerProvider).routeInformationProvider,
-          ),
-        ],
-      ),
+      routerConfig: ref.watch(routerProvider),
     );
   }
 }
